@@ -1,0 +1,36 @@
+NAME
+    oe install
+
+USE:
+    oe install [--prod] [--debug] [--nginx] [-c CLIENT] [--no-repos]
+
+DESCRIPTION:
+    On first execution creates a directory structure, to hold all the stuff and then it
+    pulls all the repositories and images declared in the project manifest.
+    On subsecuent executions it pull all the repositories
+
+    See https://jobiols.github.io/odoo-env/ to learn how to create a project.
+
+    /odoo_ar
+    ├── odoo-11.0
+    │   ├── client_one
+    │   │    ├── config             odoo.conf
+    │   │    ├── data_dir           filestore
+    │   │    ├── backup_dir         backups files
+    │   │    ├── log                odoo.log
+    │   │    ├── postgresql         postgres database
+    │   │    └── sources            custom repositories
+    │   ├── dist-local-packages     packages from image (only in developer mode)
+    │   └── dist-packages           pagkages from image (only in developer mode)
+    └── nginx
+        ├── conf                    nginx configuration
+        ├── log                     nginx log file
+        └── cert                    nginx certificates
+
+    Options:
+    --prod      Set the production environment (persistent setting)
+    --debug     Set the development environment (persistent setting)
+    --nginx     Install nginx reverse proxy
+    -c TEXT     Set the Proyect code name (persistent setting)
+    --no-repos  Does not clone or pull the project repositories
+    -h          Show this message and exit.

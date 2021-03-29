@@ -26,18 +26,17 @@ class Msg():
         return YELLOW_LIGHT + string + CLEAR
 
     def run(self, msg):
-        print(self.yellow(msg))
+        return self.yellow(msg)
 
     def done(self, msg):
-        print(self.green(msg))
+        return self.green(msg)
 
     def err(self, msg):
         print(self.red(msg))
         sys.exit()
 
     def inf(self, msg):
-        if msg:
-            print(self.yellow_light(msg))
+        return self.yellow_light(msg)
 
     def warn(self, msg):
-        print(self.red(msg))
+        return self.red(msg)

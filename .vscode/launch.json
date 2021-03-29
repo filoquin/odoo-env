@@ -10,9 +10,9 @@
             "request": "launch",
             // "program": "/home/jobiols/git-repos/odoo-env/odoo_env/oe.py",
             "python": "/usr/bin/python3",
-            "args": ["-i", "-c myproject", "--debug"],
+            "args": ["install", "-c epso", "--prod"],
             "justMyCode": false,
-            "module": "odoo_env.oe"
+            "module": "odoo_env.click"
         }
     ]
 }

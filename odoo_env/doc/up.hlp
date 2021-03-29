@@ -1,0 +1,48 @@
+NAME
+    oe up
+
+USE:
+    oe up [--prod] [--debug] [--nginx] [--env] [-c project-code] [-v] [-d database-name]
+
+DESCRIPCION:
+    Crea y arranca los contenedores necesarios para que el ecosistema Odoo se ponga en funcionamiento.
+    Dependiendo si el ambiente esta configurado en modo de desarrollo o en modo producion puede levantar distintos contenedores y conectarlos de diferente manera.
+
+Options:
+    --prod   Set the production environment. (persistent setting)
+
+        Force the system to production mode, this mode is persistent, it is intended to use
+        in a production environment.
+
+    --debug  Set the development environment. (persistent setting)
+
+        Force the system to production development mode, this mode is persistent, it is
+        intended to use in a development environment.
+
+    --nginx  Start nginx reverse proxy.
+
+        Start nginx reverse proxy, you should have installed with --nginx option for this
+        to work.
+
+    --env    Start only companion containers.
+
+        Start companion containers, such as postgres, aeroo (with older odoo versions)
+        wdb, if in debug mode.
+
+    -c TEXT  Set the Proyect code name. (persistent setting)
+
+        Set the proyect code name, when you are working with a pryect, you need to issue
+        this option only once. The following commands will remember the project.
+
+    -v       Verbose mode.
+
+        Force verbose mode, in this mode you can see the comands issued to docker.
+
+    -d TEXT  Database name. (defaults to project-code_default
+
+        Set database name, when you are working with a database database in a project,
+        you need to issue this option only once.
+        This option defaults to project-name_prod, which is the suggested name for
+        the production database.
+
+    -h       Show this message and exit.

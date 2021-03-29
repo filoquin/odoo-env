@@ -1,0 +1,10 @@
+NAME
+    oe config
+
+USE:
+    oe config
+
+DESCRIPCION:
+    Create / Update odoo.conf file, acording to project.
+
+    See https://jobiols.github.io/odoo-env/ to learn how to create a project.

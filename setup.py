@@ -18,11 +18,12 @@ setuptools.setup(
     python_requires='>=3.4',
     entry_points={
         'console_scripts': [
-            'oe=odoo_env.oe:main',
+#            'oe=odoo_env.oe:main',
+            'oe=odoo_env.click:cli',
             'sd=odoo_env.sd:main'
         ],
     },
-    install_requires=['PyYAML', 'six', 'tornado'],
+    install_requires=['PyYAML', 'six', 'tornado', 'click'],
     # TODO Esto no funciona en gentoo, no pone el archivo en /usr/local
     data_files=[('', ['odoo_env/data/nginx.conf'])],
     packages=setuptools.find_packages(),
