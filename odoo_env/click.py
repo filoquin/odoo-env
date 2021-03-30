@@ -13,7 +13,7 @@ def execute(commands):
                 click.echo(Msg().inf(command.usr_msg))
             command.execute()
 
-def common_work(prod, debug, nginx, c, no_repos=False, v=False, backup_file=False):
+def common_work(prod, debug, nginx, c, no_repos=False, v=False, backup_file=False,d=False):
     client = c.strip() if c else False
 
     # obtener el cliente
@@ -87,11 +87,15 @@ def config(prod, debug, c, v):
 @click.option('--env', is_flag=True, help='Start only companion containers.')
 @click.option('-c', help='Set the Proyect code name. (persistent setting)')
 @click.option('-v', is_flag=True, help='Verbose mode.')
-@click.option('-d', help='Database name. (defaults to projectname_prod')
 def up(prod, debug, nginx, env, c, v):
     """Start odoo container."""
-
-    click.echo('Starging containers')
+    commands = []
+    click.echo('Starting containers')
+    no_repos = False
+    options, mode, client = common_work(prod, debug, nginx, c, no_repos, v)
+    commands += OdooEnv(options).run_environment(client)
+    commands += OdooEnv(options).run_client(client)
+    execute(commands)
 
 # PULL -----------------------------------------------------------------------
 
