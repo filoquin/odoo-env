@@ -98,7 +98,11 @@ Odoo Environment Manager v%s - by jeo Software <jorge.obiols@gmail.com>
              'This option is intended to install a production environment.'
              'This option is persistent.'
     )
-
+    parser.add_argument(
+        '--from-prod',
+        action='store_true',
+        help='Restore backup from production server. Use with --restore'
+    )
     parser.add_argument(
         '--no-repos',
         action='store_true',
@@ -201,9 +205,11 @@ Odoo Environment Manager v%s - by jeo Software <jorge.obiols@gmail.com>
     if args.restore:
         database = get_param(args, 'database')
         backup_file = get_param(args, 'backup_file')
-        no_deactivate = get_param(args, 'no_deactivate')
+        no_deactivate = args.no_deactivate
+        from_server = args.from_prod
         commands += OdooEnv(options).restore(client_name, database,
-                                             backup_file, no_deactivate)
+                                             backup_file, no_deactivate,
+                                             from_server)
 
     if args.install:
         commands += OdooEnv(options).install(client_name)
