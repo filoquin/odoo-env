@@ -135,7 +135,7 @@ class OdooEnv(object):
             cmd = Command(
                 self,
                 command=command,
-                user_msg="Downloading server backup"
+                usr_msg="Downloading server backup"
             )
 
         command = 'sudo docker run --rm -i '
@@ -143,9 +143,11 @@ class OdooEnv(object):
         command += '-v %s:/backup ' % self.client.backup_dir
         command += '-v %sdata_dir/filestore:/filestore ' % self.client.base_dir
         command += '--env NEW_DBNAME=%s ' % database
-        if backup_file:
+        if backup_file and not from_server:
             command += '--env ZIPFILE=%s ' % backup_file
-        if not no_deactivate:
+        if from_server and self._client.debug:
+            command += '--env ZIPFILE=server_bkp.zip '
+        if not no_deactivate and self._client.debug:
             command += '--env DEACTIVATE=True '
         command += 'jobiols/dbtools:1.1.0 '
 
