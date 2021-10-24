@@ -71,9 +71,9 @@ Odoo Environment Manager v%s - by jeo Software <jorge.obiols@gmail.com>
         help="Go verbose mode. Prints every command")
 
     parser.add_argument(
-        '--deactivate',
+        '--no-deactivate',
         action='store_true',
-        help="Deactivate database before restore")
+        help="No Deactivate database before restore. WARNING this may be a potential risk")
 
     parser.add_argument(
         '--extract-sources',

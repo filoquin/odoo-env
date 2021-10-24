@@ -44,6 +44,7 @@ def get_backup_file(args):
         return args.backup_file[0]
     else:
         Msg().inf('Restoring newest backup. Use -f to store specific one.')
+        Msg().inf('Restoring from local backups. Use --from-server to get server backups.')
         return False
 
 
@@ -60,8 +61,8 @@ def get_param(args, param):
     if param == 'backup_file':
         return get_backup_file(args)
 
-    if param == 'deactivate':
-        if args.deactivate:
-            return args.deactivate
+    if param == 'no-deactivate':
+        if args.no_deactivate:
+            return args.no_deactivate
         else:
             return False

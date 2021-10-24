@@ -79,7 +79,7 @@ class OdooEnv(object):
                 if file_extension == '.zip':
                     filenames.append(filedesc)
 
-        if len(filenames) > 1:
+        if len(filenames) > 0:
             filenames.sort()
             msg = 'List of available backups for client %s\n\n' % client_name
             for filedesc in filenames:
