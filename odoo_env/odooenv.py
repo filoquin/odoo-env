@@ -149,7 +149,7 @@ class OdooEnv(object):
             command += '--env ZIPFILE=server_bkp.zip '
         if not no_deactivate and self._client.debug:
             command += '--env DEACTIVATE=True '
-        command += 'jobiols/dbtools:1.1.0 '
+        command += 'jobiols/dbtools:1.2.0 '
 
         cmd = Command(
             self,

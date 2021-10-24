@@ -593,7 +593,7 @@ class TestRepository(unittest.TestCase):
             '--env NEW_DBNAME=client_prod ' \
             '--env ZIPFILE=bkp.zip ' \
             '--env DEACTIVATE=True ' \
-            'jobiols/dbtools:1.1.0 '
+            'jobiols/dbtools:1.2.0 '
 
         self.assertEqual(cmds[0].command, command)
 
