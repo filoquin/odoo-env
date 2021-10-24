@@ -137,6 +137,7 @@ class OdooEnv(object):
                 command=command,
                 usr_msg="Downloading server backup"
             )
+            ret.append(cmd)
 
         command = 'sudo docker run --rm -i '
         command += '--link pg-%s:db ' % client_name
