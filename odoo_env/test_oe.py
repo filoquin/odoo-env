@@ -584,7 +584,7 @@ class TestRepository(unittest.TestCase):
         database = 'client_prod'
         backup_file = 'bkp.zip'
         oe = OdooEnv(options)
-        cmds = oe.restore(client_name, database, backup_file, deactivate=True)
+        cmds = oe.restore(client_name, database, backup_file, no_deactivate=False)
         command = \
             'sudo docker run --rm -i ' \
             '--link pg-test_client:db ' \

@@ -201,9 +201,9 @@ Odoo Environment Manager v%s - by jeo Software <jorge.obiols@gmail.com>
     if args.restore:
         database = get_param(args, 'database')
         backup_file = get_param(args, 'backup_file')
-        deactivate = get_param(args, 'deactivate')
+        no_deactivate = get_param(args, 'no_deactivate')
         commands += OdooEnv(options).restore(client_name, database,
-                                             backup_file, deactivate)
+                                             backup_file, no_deactivate)
 
     if args.install:
         commands += OdooEnv(options).install(client_name)
