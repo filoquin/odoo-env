@@ -101,7 +101,7 @@ class Client(object):
             self._images.append(Image2(img))
 
         # levantar el nombre del user server
-        self._server_user = manifest.get('server_user', 'ubuntu')
+        self._prod_server = manifest.get('prod_server', 'ubuntu')
 
     def check_common(self, manifest):
         self._port = manifest.get('port', 8069)
@@ -275,5 +275,5 @@ class Client(object):
         return self._parent.debug
 
     @property
-    def server_user(self):
-        return self._server_user
+    def prod_server(self):
+        return self._prod_server

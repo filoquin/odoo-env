@@ -99,16 +99,15 @@ class OdooEnv(object):
         """ Crea el comando para bajar el archivo desde el server
         """
         cli = Client(self, client_name)
-        server = '%s@%s' % (cli.server_user, client_name)
         if backup_file:
             # Bajar el backup backup_file del server
-            cmd = '%s:%s%s %s%sserver_bkp.zip' % (server, cli.backup_dir, backup_file,
-                                                  BASE_DIR, cli.backup_dir)
+            cmd = 'scp %s:%s%s %sserver_bkp.zip' % (cli.prod_server, cli.backup_dir,
+                                                    backup_file, cli.backup_dir)
         else:
             # bajar el ultimo archivo del server
-            last_backup = 'ssh %s ls -t %s | head -1' % (server, cli.backup_dir)
-            cmd = 'scp %s:%s$(%s) %sserver_bkp.zip' % (server, cli.backup_dir,
-                                                       last_backup, cli.backup_dir)
+            _file = 'ssh %s ls -t %s | head -1' % (cli.prod_server, cli.backup_dir)
+            cmd = 'scp %s:%s$(%s) %sserver_bkp.zip' % (cli.prod_server, cli.backup_dir,
+                                                       _file, cli.backup_dir)
         return cmd
 
     def restore(self, client_name, database=False, backup_file=False,
@@ -129,8 +128,6 @@ class OdooEnv(object):
             msg += 'and performing deactivation '
 
         if from_server:
-            msg += 'from production server'
-
             command = self.make_scp_command(client_name, backup_file)
             cmd = Command(
                 self,
